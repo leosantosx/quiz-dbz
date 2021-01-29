@@ -1,12 +1,10 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import Head from 'next/head'
 import db from '../db.json'
 
 const GlobalStyle = createGlobalStyle`
 
-  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500&display=swap');
-
   * {
-  
     box-sizing: border-box;
   }
 
@@ -35,6 +33,10 @@ const theme = db.theme
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet" />
+      </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Component {...pageProps} />
